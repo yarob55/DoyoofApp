@@ -1,0 +1,35 @@
+PODS:
+  - IQKeyboardManager (6.0.0)
+  - NVActivityIndicatorView (4.2.0):
+    - NVActivityIndicatorView/Presenter (= 4.2.0)
+  - NVActivityIndicatorView/Presenter (4.2.0)
+  - Pulsator (0.5.1)
+  - Segmentio (3.0)
+  - Spring (1.0.5)
+
+DEPENDENCIES:
+  - IQKeyboardManager
+  - NVActivityIndicatorView
+  - Pulsator
+  - Segmentio (~> 3.0)
+  - Spring (from `https://github.com/MengTo/Spring.git`)
+
+EXTERNAL SOURCES:
+  Spring:
+    :git: https://github.com/MengTo/Spring.git
+
+CHECKOUT OPTIONS:
+  Spring:
+    :commit: c540239f3590bbaf4a35c3959c329dd5ed4e3eee
+    :git: https://github.com/MengTo/Spring.git
+
+SPEC CHECKSUMS:
+  IQKeyboardManager: fdba62488e23c48a3fa8591635aff166ed946632
+  NVActivityIndicatorView: 75c9634073e03b31d7e2748cd2417feab1206195
+  Pulsator: f465ca37212d826523fe8c79b07c1a4c1a941f5e
+  Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
+  Spring: 3c7666eccefdeb87140008dc81043f89f8dbb787
+
+PODFILE CHECKSUM: e6cf168528c81214c7687390404aa94fc3e7630e
+
+COCOAPODS: 1.4.0
