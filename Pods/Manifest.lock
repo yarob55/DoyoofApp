@@ -1,16 +1,20 @@
 PODS:
+  - Alamofire (4.7.1)
   - IQKeyboardManager (6.0.0)
   - NVActivityIndicatorView (4.2.0):
     - NVActivityIndicatorView/Presenter (= 4.2.0)
   - NVActivityIndicatorView/Presenter (4.2.0)
   - Pulsator (0.5.1)
+  - RevealingSplashView (0.5.0)
   - Segmentio (3.0)
   - Spring (1.0.5)
 
 DEPENDENCIES:
+  - Alamofire (~> 4.7)
   - IQKeyboardManager
   - NVActivityIndicatorView
   - Pulsator
+  - RevealingSplashView
   - Segmentio (~> 3.0)
   - Spring (from `https://github.com/MengTo/Spring.git`)
 
@@ -24,12 +28,14 @@ CHECKOUT OPTIONS:
     :git: https://github.com/MengTo/Spring.git
 
 SPEC CHECKSUMS:
+  Alamofire: 68d7d521118d49c615a8d2214d87cdf525599d30
   IQKeyboardManager: fdba62488e23c48a3fa8591635aff166ed946632
   NVActivityIndicatorView: 75c9634073e03b31d7e2748cd2417feab1206195
   Pulsator: f465ca37212d826523fe8c79b07c1a4c1a941f5e
+  RevealingSplashView: 0794eecad3a8983ac11a1fe474e9a9b51b926780
   Segmentio: 1607fba3b42230f5f91e997d1a3f337f1176674c
   Spring: 3c7666eccefdeb87140008dc81043f89f8dbb787
 
-PODFILE CHECKSUM: e6cf168528c81214c7687390404aa94fc3e7630e
+PODFILE CHECKSUM: 17cde99fb516f046ef9db4ce749069e3598b7082
 
 COCOAPODS: 1.4.0

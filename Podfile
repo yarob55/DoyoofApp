@@ -11,6 +11,8 @@ target 'Portal World' do
   pod 'Pulsator'
   pod 'NVActivityIndicatorView'
   pod 'IQKeyboardManager'
+  pod 'RevealingSplashView'
+  pod 'Alamofire', '~> 4.7'
   
   
 

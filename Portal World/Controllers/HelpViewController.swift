@@ -83,6 +83,9 @@ class HelpViewController: UIViewController {
         animateTheScene()
     }
     
+    @IBAction func skipButtonClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
+    }
     /*
     // MARK: - Navigation
 

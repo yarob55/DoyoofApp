@@ -9,6 +9,7 @@
 import UIKit
 import NVActivityIndicatorView
 import Spring
+import RevealingSplashView
 
 class SignInViewController: UIViewController {
 
@@ -23,14 +24,20 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        moveLogoOutTheScreen()
+        setSplashView()
         setGestureReconizer()
-        setEnterAnimation()
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    private func moveLogoOutTheScreen()
+    {
+        logoImageView.transform = CGAffineTransform(scaleX: 0, y: -100)
     }
     
     private func setGestureReconizer()
@@ -46,6 +53,8 @@ class SignInViewController: UIViewController {
         activityIndicator.startAnimating()
         //performSegue(withIdentifier: "loginViewButton", sender: nil)
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            self.loginLabel.isHidden = false
+            self.activityIndicator.stopAnimating()
             self.performSegue(withIdentifier: "toStatusViewController", sender: nil)
         }
         
@@ -58,8 +67,25 @@ class SignInViewController: UIViewController {
         logoImageView.duration = 1.5
         logoImageView.force = 1.5
         logoImageView.animateNext {
-            
+           
         }
+    }
+    
+    
+    private func setSplashView()
+    {
+        //Initialize a revealing Splash with with the iconImage, the initial size and the background color
+        let revealingSplashView = RevealingSplashView(iconImage: UIImage(named: "ProjectLogo")!,iconInitialSize: CGSize(width: 200, height: 200), backgroundColor: UIColor.white)
+//        revealingSplashView.animationType = .heartBeat
+        
+        //Adds the revealing splash view as a sub view
+        self.view.addSubview(revealingSplashView)
+        revealingSplashView.duration = 3
+        //Starts animation
+        revealingSplashView.startAnimation(){
+            self.setEnterAnimation()
+        }
+        
     }
     
     

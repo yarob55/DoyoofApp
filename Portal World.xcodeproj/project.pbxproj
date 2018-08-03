@@ -28,6 +28,7 @@
 		495955A92109398D0096438A /* Portal_WorldUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495955A82109398D0096438A /* Portal_WorldUITests.swift */; };
 		49824C0D2111BD8000F2981E /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49824C0C2111BD8000F2981E /* Location.swift */; };
 		49824C0F2111C3D300F2981E /* MethodsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49824C0E2111C3D300F2981E /* MethodsVC.swift */; };
+		49F8F553211391B8003A6550 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49F8F552211391B8003A6550 /* Service.swift */; };
 		49FEF6DC211267D500BF2868 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEF6DB211267D500BF2868 /* HelpViewController.swift */; };
 		49FEF6DE21126D3C00BF2868 /* LFTPulseAnimation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEF6DD21126D3C00BF2868 /* LFTPulseAnimation.swift */; };
 		49FEF6E02112784F00BF2868 /* SignInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FEF6DF2112784F00BF2868 /* SignInViewController.swift */; };
@@ -84,6 +85,7 @@
 		495955AA2109398D0096438A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49824C0C2111BD8000F2981E /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		49824C0E2111C3D300F2981E /* MethodsVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MethodsVC.swift; sourceTree = "<group>"; };
+		49F8F552211391B8003A6550 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
 		49FEF6DB211267D500BF2868 /* HelpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 		49FEF6DD21126D3C00BF2868 /* LFTPulseAnimation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LFTPulseAnimation.swift; sourceTree = "<group>"; };
 		49FEF6DF2112784F00BF2868 /* SignInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				4959558C2109398C0096438A /* Main.storyboard */,
 				49110D63210F8BD500F5C31C /* Main Files */,
 				49110D62210F8BCF00F5C31C /* Extra */,
+				49F8F5512113919F003A6550 /* Networking */,
 				49110D61210F8BC800F5C31C /* Assets */,
 				49110D60210F8BBF00F5C31C /* Controllers */,
 				49110D5F210F8BBA00F5C31C /* Views */,
@@ -247,6 +250,14 @@
 				495955AA2109398D0096438A /* Info.plist */,
 			);
 			path = "Portal WorldUITests";
+			sourceTree = "<group>";
+		};
+		49F8F5512113919F003A6550 /* Networking */ = {
+			isa = PBXGroup;
+			children = (
+				49F8F552211391B8003A6550 /* Service.swift */,
+			);
+			path = Networking;
 			sourceTree = "<group>";
 		};
 		BE6AFF84832780791FDD239F /* Pods */ = {
@@ -433,17 +444,21 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Portal World/Pods-Portal World-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
 				"${BUILT_PRODUCTS_DIR}/NVActivityIndicatorView/NVActivityIndicatorView.framework",
 				"${BUILT_PRODUCTS_DIR}/Pulsator/Pulsator.framework",
+				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/Segmentio/Segmentio.framework",
 				"${BUILT_PRODUCTS_DIR}/Spring/Spring.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NVActivityIndicatorView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Pulsator.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Segmentio.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Spring.framework",
 			);
@@ -584,6 +599,7 @@
 				49FEF6DC211267D500BF2868 /* HelpViewController.swift in Sources */,
 				49285C1421124D2100E75C66 /* Constants.swift in Sources */,
 				49110D6C210F8F2600F5C31C /* CustomizableTextField.swift in Sources */,
+				49F8F553211391B8003A6550 /* Service.swift in Sources */,
 				49233B352111C667008AFECC /* LocationsFiller.swift in Sources */,
 				49FEF6E02112784F00BF2868 /* SignInViewController.swift in Sources */,
 				49110D6B210F8F2600F5C31C /* CustomizableButton.swift in Sources */,
@@ -765,7 +781,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A24CY4Q5D9;
 				INFOPLIST_FILE = "Portal World/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-World2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -781,7 +800,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = A24CY4Q5D9;
 				INFOPLIST_FILE = "Portal World/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-World2";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -797,7 +819,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Portal WorldTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-WorldTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -814,7 +840,11 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Portal WorldTests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-WorldTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -830,7 +860,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Portal WorldUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-WorldUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -846,7 +880,11 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				INFOPLIST_FILE = "Portal WorldUITests/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "Yarob.Portal-WorldUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

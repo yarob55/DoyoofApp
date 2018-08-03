@@ -35,10 +35,18 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
         setSegmentControl()
     }
-    @IBAction func loginBtnClicked(_ sender: UIButton)
-    {
-        
+    
+    @IBAction func logouButtonClicked(_ sender: UIButton) {
+        self.dismiss(animated: true, completion: nil)
     }
+    
+    private func changeStatusRequest(status : Int)
+    {
+        Service.changeStatus(statusType: status) { ( error) in
+            print("done")
+        }
+    }
+    
     
 }
 
@@ -63,21 +71,25 @@ extension LoginViewController
         content.append(driverItem)
         content.append(unAvailableItem)
         
+        
         let fontSize:CGFloat = 15.0
+        var titleFont = UIFont(name: "Avenir Next", size: fontSize)!
+        titleFont = UIFont.boldSystemFont(ofSize: titleFont.pointSize)
+    
         let states = SegmentioStates(
             defaultState: SegmentioState(
                 backgroundColor: .clear,
-                titleFont: UIFont.systemFont(ofSize: fontSize),
+                titleFont: titleFont,
                 titleTextColor: .black
             ),
             selectedState: SegmentioState(
                 backgroundColor: .clear,
-                titleFont: UIFont.systemFont(ofSize: fontSize),
+                titleFont: titleFont,
                 titleTextColor: .black
             ),
             highlightedState: SegmentioState(
                 backgroundColor: .clear,
-                titleFont: UIFont.boldSystemFont(ofSize: fontSize),
+                titleFont: titleFont,
                 titleTextColor: .white
             )
         )
@@ -87,9 +99,9 @@ extension LoginViewController
             backgroundColor: .clear,
             //segmentPosition: SegmentioPosition,
             scrollEnabled: true,
-            indicatorOptions: SegmentioIndicatorOptions(type: .bottom, ratio: 1, height: 5, color: Colors.mainColor),
+            indicatorOptions: SegmentioIndicatorOptions(type: .top, ratio: 1, height: 5, color: Colors.mainColor),
             horizontalSeparatorOptions: SegmentioHorizontalSeparatorOptions(type: .none, height: 20, color: UIColor.red),
-            verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 0.6, color: UIColor.white),
+            verticalSeparatorOptions: SegmentioVerticalSeparatorOptions(ratio: 0.6, color: UIColor(hex: "F0F2F6")),
             imageContentMode: .center,
             labelTextAlignment: .center,
             segmentStates: states
@@ -108,7 +120,7 @@ extension LoginViewController
         
         segmentControl.valueDidChange = { segmentio, segmentIndex in
             self.counter = self.counter + 1
-            
+            var newStatus = 0
             if self.counter == 4
             {
                 self.performSegue(withIdentifier: "toHelpView", sender: nil)
@@ -119,6 +131,7 @@ extension LoginViewController
             let selectedColor:UIColor!
             if selectedIndex == 0
             {
+                newStatus = 1
                image = UIImage(named: "like")
                 selectedColor = Colors.mainColor
                 self.statusTitleLabel.textColor = selectedColor
@@ -127,6 +140,7 @@ extension LoginViewController
                 
             }else if selectedIndex == 1
             {
+                newStatus = 2
                 selectedColor = UIColor(hex: "#ecac15")
                 image = UIImage(named: "stop")
                 self.statusTitleLabel.textColor = selectedColor
@@ -134,6 +148,7 @@ extension LoginViewController
                 self.statusDescriptionLabel.text = "I am helping someone at the current time and will be available soon"
             }else
             {
+                newStatus = 3
                 selectedColor = UIColor(hex: "#c61a14")
                 self.statusTitleLabel.textColor = selectedColor
                 image = UIImage(named: "dislike")
@@ -141,10 +156,7 @@ extension LoginViewController
                 self.statusDescriptionLabel.text = "I am unavailable and not ready to help anyone at the time being"
             }
             
-            let options = SegmentioOptions(
-                indicatorOptions: SegmentioIndicatorOptions(type: .bottom, ratio: 1, height: 5, color: selectedColor)
-            )
-            
+            self.changeStatusRequest(status: newStatus)
             self.statusImage.animation = "zoomOut"
             self.statusImage.duration = 0.4
             self.statusImage.animateNext {

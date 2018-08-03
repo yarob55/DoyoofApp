@@ -142,6 +142,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     private func replaceNodeWithSuccess()
     {
+        guard let _ = locationNode else {return}
         let dimensions = locationNode.position
         locationNode.removeFromParentNode()
         locationNode = nil
@@ -166,12 +167,14 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         //exit
         let fadeOutAction = SCNAction.fadeOut(duration: 0.5)
         let hoverDown = SCNAction.moveBy(x: 0, y: -0.03, z: 0, duration: 0.6)
+        let scale = SCNAction.scale(by: 1.5, duration: 0.6)
         let hoverAndFadeOut = SCNAction.group([fadeOutAction, hoverDown])
+        let scaleAndFadeOut = SCNAction.group([fadeOutAction, scale])
         
         
         let rotationAction = SCNAction.rotateBy(x: 0, y: CGFloat(Float.pi), z: 0, duration: 1)
         let repeatRotation = SCNAction.repeat(rotationAction, count: 2)
-        let actionSequence = SCNAction.sequence([hoverAndFadeIn, repeatRotation, hoverAndFadeOut])
+        let actionSequence = SCNAction.sequence([hoverAndFadeIn, repeatRotation, scaleAndFadeOut])
         node.runAction(actionSequence)
         self.sceneView.scene.rootNode.addChildNode(node)
         DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
@@ -237,6 +240,15 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     
     
+    private func sendArrivalRequest()
+    {
+        Service.arrival { (error) in
+            print("done")
+        }
+    }
+    
+    
+    
     
     
     
@@ -277,6 +289,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             let dimensions = locationNode.position
             locationNode.removeFromParentNode()
             locationNode = nil
+            sendArrivalRequest()
             makeSuccessNode(position: dimensions)
         }
     }
